@@ -1,0 +1,121 @@
+{
+  "info": {
+    "name": "API Financiera: Tarjetas de Crédito",
+    "description": "Colección de pruebas para los endpoints de Tarjetas de Crédito (Node.js, TypeScript, PostgreSQL)",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "1. GET - Listar tarjetas activas (200 OK)",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:3000/api/v1/credit-cards",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "3000",
+          "path": ["api", "v1", "credit-cards"]
+        }
+      }
+    },
+    {
+      "name": "2. POST - Crear tarjeta de crédito (201 Created)",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"userId\": 1,\n  \"limit\": 10000\n}"
+        },
+        "url": {
+          "raw": "http://localhost:3000/api/v1/credit-cards",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "3000",
+          "path": ["api", "v1", "credit-cards"]
+        }
+      }
+    },
+    {
+      "name": "3. POST - Fallo por falta de limit o userId (400 Bad Request)",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"userId\": 1\n}"
+        },
+        "url": {
+          "raw": "http://localhost:3000/api/v1/credit-cards",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "3000",
+          "path": ["api", "v1", "credit-cards"]
+        }
+      }
+    },
+    {
+      "name": "4. GET - Obtener tarjeta por ID (200 OK / 404 Not Found)",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:3000/api/v1/credit-cards/1",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "3000",
+          "path": ["api", "v1", "credit-cards", "1"]
+        }
+      }
+    },
+    {
+      "name": "5. PATCH - Actualizar creditLimit o status (200 OK)",
+      "request": {
+        "method": "PATCH",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"creditLimit\": 25000,\n  \"status\": \"ACTIVE\"\n}"
+        },
+        "url": {
+          "raw": "http://localhost:3000/api/v1/credit-cards/1",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "3000",
+          "path": ["api", "v1", "credit-cards", "1"]
+        }
+      }
+    },
+    {
+      "name": "6. DELETE - Eliminación lógica / Soft Delete (204 No Content)",
+      "request": {
+        "method": "DELETE",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:3000/api/v1/credit-cards/1",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "3000",
+          "path": ["api", "v1", "credit-cards", "1"]
+        }
+      }
+    }
+  ]
+}
+
